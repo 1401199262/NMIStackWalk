@@ -242,9 +242,9 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT drvObj, PUNICODE_STRING regPath)
 	memset(g_NmiContext, 0, nmiContextLength);
 	memset(g_PageOfpStackWalkResult, 0, 0x1000);
 
-	UNICODE_STRING FunName;
-	RtlInitUnicodeString(&FunName, L"MmCopyVirtualMemory");
-	*(ULONG64*)((ULONG64)g_NmiContext + 0x444) = (ULONG64)MmGetSystemRoutineAddress(&FunName);
+	//UNICODE_STRING FunName;
+	//RtlInitUnicodeString(&FunName, L"MmCopyVirtualMemory");
+	//*(ULONG64*)((ULONG64)g_NmiContext + 0x444) = (ULONG64)MmGetSystemRoutineAddress(&FunName);
 
 	StopDriver = FALSE;
 	PsCreateSystemThread(&SendNMIThreadHandle, 0, NULL, NULL, NULL, &SendNMIKernelRoutine, NULL);
